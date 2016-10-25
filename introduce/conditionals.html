@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+	<div id="app3">
+		<p v-if="seen">Now you can see me.</p>
+	</div>
+
+	<script>
+		var app3 = new Vue({
+			el: '#app3',
+			data: {
+				seen: false
+				// 当为false的时候,p标签从DOM中消失
+			}
+		})
+	</script>
+</body>
+</html>
