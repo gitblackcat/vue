@@ -6,15 +6,22 @@
 	<script type="text/javascript" src="../vue.js"></script>
 </head>
 <body>
-	<div id="app">
+	<div id="app1">
+		<!-- 为什么要写两个花括号? -->
+		<!-- 参考react中js行间写样式style={{color: 'red'}},
+			可以写成var objcolor = {color: 'red'},
+			style={objcolor}
+			第一个花括号是为了告诉程序执行表达式,第二个花括号就是对应的对象
+		-->
+		<!-- 这里生搬硬套到vue上 一个猜想 不一定对 -->
 		{{msg}}
 	</div>
 
 	<script>
-		var app = new Vue({
-			el: "#app",
+		var app1 = new Vue({
+			el: '#app1',
 			data: {
-				msg: "Hello Vue!"
+				msg: 'Hello Vue!'
 			}
 		})
 	</script>

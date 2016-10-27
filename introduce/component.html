@@ -1,0 +1,93 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+	<div id="demo">
+		<todo-item :somemsg="msg"></todo-item>
+		<todo-item v-for="item in list" :step="item"></todo-item>
+	</div>
+
+	<script>
+		// 父作用域就是实例,子组件就是todo-item
+
+		// 选择id为demo的div作为vue的实例化区域,内部有todo-item组件,props是接收父类传入的参数,传入的是msg.于是需要在组件上绑定somemsg.v-bind可以省略,于是就可以写成:somemsg
+
+		// v-for相当于就是一个for…of…遍历,遍历组件多次,每次绑定一个遍历出的item给step,step就可以在子组件内部的props接收使用了
+
+		// 从上可以理解为先从data中获取了数据,然后绑定到"自定义属性"上,通过props接收传入的数据,然后写在子组件上
+
+		Vue.component('todo-item',{
+			props: ['somemsg','step'],
+			template: '<div>{{ somemsg || step.text }}</div>'
+		})
+
+		var vm = new Vue({
+			el: '#demo',
+			data: {
+				msg: 'How to build something awesome?',
+				list: [
+					{ text: 'Learn JavaScript' },
+					{ text: 'Learn Vue' },
+					{ text: 'Build something awesome' }
+				]
+			}
+		})
+	</script>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+	<!-- <div id="demo">
+						注意如果自定义属性的命名是驼峰,那么会报错
+		<todo-item v-for="item in list" :aB="item"></todo-item>
+	</div> -->
+
+	<div id="demo">
+		<todo-item v-for="item in list" :a="item"></todo-item>
+	</div>
+
+	<script>
+		// Vue.component('todo-item',{
+		// 	props: ['aB'],
+		// 	template: '<div>{{ aB.txt }}</div>'
+		// })
+
+		Vue.component('todo-item',{
+			props: ['a'],
+			template: '<div>{{ a.text }}</div>'
+		})
+
+		// var vm = new Vue({
+		// 	el: '#demo',
+		// 	data: {
+		// 		list: [
+		// 			{ txt: '12' },
+		// 			{ txt: '45' }
+		// 		]
+		// 	}
+		// })
+
+		var vm = new Vue({
+			el: '#demo',
+			data: {
+				list: [
+					{ text: 'Learn JavaScript' },
+					{ text: 'Learn Vue' },
+					{ text: 'Build something awesome' }
+				]
+			}
+		})
+	</script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+	<div id="time"></div>
+
+	<script>
+		var data = {
+			time: new Date()
+		};
+
+		setInterval(function(){
+			data.time = new Date();
+		},1000)
+
+		var vm = new Vue({
+			el: '#time',
+			data: data
+		});
+
+		vm.$watch('time',function(newTime,oldTime){
+			vm.$el.innerHTML = oldTime + ' : ' + newTime;
+		})
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+	
+	<script>
+		var vm = new Vue({
+			data: {
+				a: 1
+			},
+			created: function(){
+				console.log('a is: ' + this.a);
+			}
+		});
+		// 钩子在我理解就是在实例的整个生命周期中,挂上去的在某种特定时刻触发,执行的程序
+		// 类似于回调,在某一个函数结束时,才能触发执行回调
+	</script>
+
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+	
+	<script>
+		var vm = new Vue({
+			data: {
+				a: 1
+			},
+			created: function(){
+				console.log(this.a);
+			}
+		})
+	</script>
+
+</body>
+</html>

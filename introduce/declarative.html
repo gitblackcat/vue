@@ -6,33 +6,30 @@
 	<script type="text/javascript" src="../vue.js"></script>
 </head>
 <body>
-	<div id="app">
+	<div id="app2">
 		{{msg}}
 	</div>
 
-	<div id="app2">
-		<span v-bind:title="message">
+	<div id="app3">
+		<span v-bind:title="title">
 			Hover your mouse over me for a few seconds to see my dynamically bound title!
-			<br>
-			{{message}}
 		</span>
 	</div>
 
 	<script>
-		var app = new Vue({
-			el: '#app',
-			data: {
-				msg: 'Hello Vue!'
-			}
-		})
-
 		var app2 = new Vue({
 			el: '#app2',
 			data: {
-				message: 'Time: ' + new Date()
+				msg: 'Hello Vue!'
 			}
 		});
-
+		
+		var app3 =new Vue({
+			el: '#app3',
+			data: {
+				title: 'Time: ' + new Date()
+			}
+		});
 	</script>
 </body>
 </html>

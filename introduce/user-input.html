@@ -6,33 +6,33 @@
 	<script type="text/javascript" src="../vue.js"></script>
 </head>
 <body>
-	<div id="app5">
+	<div id="app6">
 		<p>{{msg}}</p>
-		<button type="button" v-on:click="reverseMsg">reverse msg</button>
+		<button type="button" v-on:click="reverseEvent">reverseMsg</button>
 	</div>
 
-	<div id="app6">
-		<p>{{modelMsg}}</p>
-		<input type="text" v-model="modelMsg">
+	<div id="app7">
+		<p>{{model}}</p>
+		<input type="text" v-model="model">
 	</div>
 
 	<script>
-		var app5 = new Vue({
-			el: '#app5',
+		var app6 = new Vue({
+			el: '#app6',
 			data: {
 				msg: 'Hello Vue!'
 			},
 			methods: {
-				reverseMsg: function(){
+				reverseEvent: function(){
 					this.msg = this.msg.split('').reverse().join('');
 				}
 			}
-		});
+		})
 
-		var app6 = new Vue({
-			el: '#app6',
+		var app7 = new Vue({
+			el: '#app7',
 			data: {
-				modelMsg: 'Hello Vue!'
+				model: 'Hello Vue!'
 			}
 		})
 	</script>
