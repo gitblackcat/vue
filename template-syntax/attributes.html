@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		button{
+			display: inline-block;
+			width: 300px;
+			height: 300px;
+			font-size: 20px;
+			text-align: center;
+			line-height: 300px;
+		}
+		div{
+			width: 100px;
+			height: 100px;
+		}
+		#red{
+			background-color: red;
+		}
+		#yellow{
+			background-color: yellow;
+		}
+	</style>
+	<script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+	<button id="attr" v-bind:disabled="onOff">点击</button>
+
+	<div v-bind:id="colors"></div>
+
+	<script>
+		var vm1 = new Vue({
+			el: '#attr',
+			data: {
+				onOff: true
+			}
+		});
+
+		var vm2 = new Vue({
+			el: 'div',
+			data: {
+				colors: 'yellow'
+			}
+		})
+	</script>
+</body>
+</html>

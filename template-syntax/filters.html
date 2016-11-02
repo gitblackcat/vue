@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+	<div class="time">
+		{{ date | filterDate }}
+	</div>
+
+	<script>
+		// Vue 2.x 中，过滤器只能在 mustache 绑定中使用。
+		//为了在指令绑定中实现同样的行为，应该使用计算属性
+
+		var t = new Vue({
+			el: '.time',
+			data: {
+				date: new Date()
+			},
+			filters: {
+				filterDate: function(value){
+					var year = value.getFullYear(),
+						month = value.getMonth() + 1,
+						date = value.getDate(),
+						day = value.getDay(),
+						hour = value.getHours(),
+						minute = value.getMinutes(),
+						second = value.getSeconds();
+
+					switch (day) {
+						case 0:
+							day = '周日';
+							break;
+						case 1:
+							day = '周一';
+							break;
+						case 2:
+							day = '周二';
+							break;
+						case 3:
+							day = '周三';
+							break;
+						case 4:
+							day = '周四';
+							break;
+						case 5:
+							day = '周五';
+							break;
+						default:
+							day = '周六';
+							break;
+					}
+
+					return year + '-' + month + '-' + date + '-' + day + '-' + hour + ':' + minute + ':' + second;
+
+				}
+			}
+		});
+
+		setInterval(function(){
+			t.date = new Date();
+		},1000)
+	</script>
+</body>
+</html>

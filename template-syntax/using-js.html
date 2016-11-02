@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+	<div class="number">
+		{{ number + 0 + '秒' }}
+	</div>
+
+	<script>
+		var n = new Vue({
+			el: '.number',
+			data: {
+				number: 0
+			}
+		});
+		setInterval(function(){
+			n.number++;
+		},1000)
+	</script>
+
+	<div class="ok">
+		{{ ok ? 'good' : 'bad' }}
+	</div>
+
+	<script>
+		var ok = new Vue({
+			el: '.ok',
+			data: {
+				ok: true
+			}
+		});
+
+		setInterval(function(){
+			ok.ok = !ok.ok;
+		},1000)
+	</script>
+
+	<div class="replace">
+		<p>{{msg}}</p>
+		<button v-on:click="replaceStr()">replace</button>
+	</div>
+
+	<script>
+		var replace = new Vue({
+			el: '.replace',
+			data: {
+				msg : 'Hello Vue!'
+			},
+			methods: {
+				replaceStr: function(){
+					this.msg = this.msg.replace(/!/,'?');
+				}
+			}
+		});
+	</script>
+
+	<div class="reverse">
+		{{ message.split('').reverse().join('') }}
+	</div>
+
+	<script>
+		var reverse = new Vue({
+			el: '.reverse',
+			data: {
+				message: 'Hello Vue!'
+			}
+		})
+	</script>
+</body>
+</html>

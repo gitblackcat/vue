@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+	<!-- 在class为raw-html的div中插入一个无序列表 -->
+	<!-- 被插入的内容都会被当做 HTML —— 数据绑定会被忽略 -->
+	<!-- 所以这里的{{msg}}没有效果 -->
+	<!-- 站点上动态渲染的任意 HTML 可能会非常危险，因为它很容易导致 XSS 攻击 -->
+	<div class="raw-html" v-html="rawHtml">
+		{{msg}}
+	</div>
+
+	<script>
+		var vm = new Vue({
+			el: '.raw-html',
+			data: {
+				msg: '<ul><li>123</li></ul>',
+				rawHtml: '<ul><li>123</li><li>456</li><li>789</li></ul>'
+			}
+		});
+	</script>
+</body>
+</html>
