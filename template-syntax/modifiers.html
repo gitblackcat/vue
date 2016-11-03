@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		img{
+			width: 300px;
+			height: 300px;
+		}
+	</style>
+	<script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+			<!-- 虽然说是原生事件,但是没有前缀"on" -->
+
+			<!-- 阻止图片虚影拖拽的默认事件 -->
+	<img src="../vue-instance/lifecycle-compare.png" @mousedown.prevent="down">
+
+	<script>
+		var vm = new Vue({
+			el: 'img',
+			methods: {
+				down: function(){}
+			}
+		})
+
+	</script>
+
+	<style>
+		.a{
+			width: 300px;
+			height: 300px;
+			background-color: red;
+		}
+		.b{
+			width: 100px;
+			height: 100px;
+			background-color: green;
+		}
+	</style>
+
+	<div id="app">  
+			<!-- 只有点击自身(不包括子元素) 才能触发事件 -->
+	    <div @click.self="test" class="a">  
+	        <div class="b">  
+	        </div>  
+	    </div>  
+	</div>  
+	<script>  
+	    var vm1 = new Vue({  
+	        el: '#app',  
+	        methods: {  
+	            test: function (event) {  
+	                console.log(event);  
+	            }  
+	        }  
+	    })  
+	</script> 
+</body>
+</html>

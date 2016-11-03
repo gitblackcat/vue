@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+	<!-- 指令（Directives）是带有 v- 前缀的特殊属性。指令属性的值预期是单一 JavaScript 表达式,(除了 v-for) -->
+		<!-- 指令的职责就是当其表达式的值改变时相应地将某些行为应用到 DOM 上 -->
+
+	<!-- 一些指令能接受一个“参数”，在指令后以冒号指明 -->
+	<!-- 在这里 href 是参数，告知 v-bind指令 将a元素的 href 属性与表达式 url 的值绑定 -->
+
+	<!-- 只有v-bind和v-on有缩写 v-bind:href="url" ==> :href="url"-->
+	<!-- v-on:click="a()" ==> @click="a()" -->
+	
+	<a :href="url" target="_blank">segmentfalut</a>
+
+	<script>
+		var vm = new Vue({
+			el: 'a',
+			data: {
+				url: 'https://segmentfault.com/'
+			}
+		})
+	</script>
+
+	<style>
+		div{
+			width: 100px;
+			height: 100px;
+			border: 1px solid #000;
+		}
+		.red{
+			background-color: red;
+		}
+	</style>
+
+	<div @click="changeColor"></div>
+	<div @click="changeColor"></div>
+	<div @click="changeColor"></div>
+
+	<script>
+		var c = new Vue({
+			el: 'div', //当上面有多个div的时候,这里的div只代表第一个
+			data: {
+				txt: '123',
+				onOff: true
+			},
+			methods: {
+				changeColor: function(){
+					this.onOff ? c.$el.className = 'red' : c.$el.className = '';
+					this.onOff = !this.onOff;
+				}
+			}
+		})
+	</script>
+
+
+
+</body>
+</html>

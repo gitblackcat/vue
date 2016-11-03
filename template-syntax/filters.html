@@ -63,5 +63,46 @@
 			t.date = new Date();
 		},1000)
 	</script>
+
+	<div class="series">
+		{{ number | filter1 | filter2 }}
+	</div>
+
+	<script>
+		var n = new Vue({
+			el: '.series',
+			data: {
+				number: 1
+			},
+			filters: {
+				filter1: function(value){
+					return value + 1;
+				},
+				filter2: function(value){
+					return value + 1;
+				}
+			}
+		})
+	</script>
+
+	<div class="parameter">
+		{{ name | filterA(' : ',age) }}
+	</div>	
+
+	<script>
+		var name = new Vue({
+			el: '.parameter',
+			data: {
+				name: 'blackcat',
+				age: 100
+			},
+			filters: {
+				filterA: function(value,flags,age){
+					return value + flags + age;
+				}
+			}
+		})
+	</script>
+
 </body>
 </html>
