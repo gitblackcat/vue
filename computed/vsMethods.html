@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+	<div class="vsMethods">
+		{{d}}
+		{{z()}}
+	</div>
+
+	<script>
+
+		var vm = new Vue({
+			el: '.vsMethods',
+			data: {
+				msg: 'hello'
+			},
+			computed: {
+				d: function(){
+					return Date.now() + this.msg;
+				}
+			},
+			methods: {
+				z: function(){
+					return Date.now() + this.msg;
+				}
+			}
+		});
+
+		/*
+			计算属性依赖 vm.msg.因为这是一个在 Vue实例中被观察的数据属性,那么它就被视为了一个反应式依赖.无论何时 vm.msg 改变,vm.d 的值都会被重新计算.
+			然而,Date.now()并不是反应式依赖,因为它没有和 Vue 的数据观察系统发生任何关系.因此,当你在程序中访问vm.example时,你会发现除非vm.msg触发了一次重新计算,否则时间戳始终是相同的值.
+
+			在控制台一直敲'vm.d'得到的内容总是一样的,但一直敲'vm.z()',每次得到的值都不一样
+		*/
+	</script>
+</body>
+</html>

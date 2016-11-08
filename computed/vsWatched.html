@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+	<div class="vsWatchedw">
+		{{ fullNameW }}
+	</div>
+
+	<script>
+		var w = new Vue({
+			el: '.vsWatchedw',
+			data: {
+				firstName: 'zd',
+				lastName: 'y',
+				fullNameW: 'zd y'
+			},
+			watch: {
+				firstName: function(val){
+					this.fullNameW = val + ' ' + this.lastName;
+				},
+				lastName: function(val){
+					this.fullNameW = this.firstName + ' ' + val
+				}
+			}
+		})
+	</script>
+
+	<div class="vsWatchedc">
+		{{ fullNameC }}
+	</div>
+
+	<script>
+		var c = new Vue({
+			el: '.vsWatchedc',
+			data: {
+				firstName: 'zd',
+				lastName: 'y'
+			},
+			computed: {
+				fullNameC: function(){
+					return this.firstName + ' ' + this.lastName;
+				}
+			}
+		})
+	</script>
+</body>
+</html>

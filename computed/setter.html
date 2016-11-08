@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+	<div class="set">
+		{{ fullName }}
+	</div>
+
+	<script>
+		var s = new Vue({
+			el: '.set',
+			data: {
+				firstName: 'zd',
+				lastName: 'y'
+			},
+			computed: {
+				fullName: {
+					get: function(){
+						return this.firstName + ' ' + this.lastName;
+					},
+					set: function(newValue){
+						var name = newValue.split(' ');
+						this.firstName = name[0];
+						this.lastName = name[1];
+					}
+					// 现在在运行s.fullName = 'John Doe'时, setter 会被调用, vm.firstName 和 vm.lastName 也会被对应更新
+
+					//如果没有set,那么s.fullName改变,视图也不会变
+				}
+			}
+		})
+	</script>
+</body>
+</html>

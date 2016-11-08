@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+	
+	<div class="basic">
+		<p>Original message: "{{ msg }}"</p>
+		<p>Computed reverse message: "{{ reverseMsg }}"</p>
+	</div>
+
+	<script>
+		var vm = new Vue({
+			el: '.basic',
+			data: {
+				msg: 'Hello Vue!'
+			},
+			computed: {
+				reverseMsg: function(){
+					return this.msg.split('').reverse().join('');
+				}
+			}
+		})
+	</script>
+
+</body>
+</html>
