@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.active{
+			width: 100px;
+			height: 100px;
+			background-color: red;
+		}
+	</style>
+	<script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+	<div class="obj1">
+		<todo-item v-for="item in lists" :class="{ active: item.isActive }" :item="item" v-on:click="showMsg(index)"></todo-item>
+	</div>
+	<script>
+		Vue.component('todo-item',{
+			props: ['item'],
+			template: '<div>{{item.msg}}</div>'
+		})
+
+		var o1 = new Vue({
+			el: '.obj1',
+			data: {
+				lists: [
+					{ isActive: true,msg: 'yes' },
+					{ isActive: false,msg: 'no' }
+				]
+			},
+			methods: {
+				showMsg: function(index){
+					alert(123);
+					alert( this.lists[index].msg );
+				}
+			}
+		})
+	</script>
+
+
+</body>
+</html>

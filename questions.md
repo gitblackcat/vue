@@ -1,0 +1,1 @@
+ClassAndStyle/Object-syntax.html: 为什么点击事件无效
