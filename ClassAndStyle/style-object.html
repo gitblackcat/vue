@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+	<div :style="{ border: '1px '+ bs + ' ' + bc  ,width: w,height: h }"></div>
+	<script>
+		var s = new Vue({
+			el: 'div',
+			data: {
+				bc: 'yellow',
+				bs: 'solid',
+				w: '100px',
+				h: '100px'
+			}
+		})
+	</script>
+
+	<style>
+		#test{
+			width: 100px;
+			height: 100px;
+			background-color: red;
+		}
+	</style>
+
+	<div id="test" :style="{ borderWidth: bw,borderColor: bc,borderStyle: bs }"></div>
+
+	<script>
+		var t = new Vue({
+			el: '#test',
+			data: {
+				bw: '5px',
+				bc: 'black',
+				bs: 'solid'
+			}
+		})
+	</script>
+</body>
+</html>

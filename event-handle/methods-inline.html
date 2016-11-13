@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+	<div class="demo">
+		<div @click="sayHi('hi')">say hi</div>
+		<div @click="sayWhat('what')">say what</div>
+	</div>
+
+	<script>
+		var d = new Vue({
+			el: '.demo',
+			methods: {
+				sayHi: function(msg){
+					alert( msg );
+				},
+				sayWhat: function(msg){
+					alert( msg );
+				}
+			}
+		})
+	</script>
+</body>
+</html>

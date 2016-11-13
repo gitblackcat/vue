@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+	<div class="demo">
+		<input type="text" v-model="newMsg" @keyup.enter="addMsg()" placeholder="add something">
+		<ul>
+			<li is="my-component" v-for="(item,index) in items" :title="item" @remove="items.splice(index,1)"></li>
+		</ul>
+	</div>
+
+	<script>
+		Vue.component('my-component',{
+			props: ['title'],
+			template: '<li>\
+				{{title}}\
+				<button type="button" @click="$emit(\'remove\')">X</button>\
+			</li>'
+		})
+
+		var demo = new Vue({
+			el: '.demo',
+			data: {
+				newMsg: '',
+				items: ['Do the dishes','Take out the trash','Mow the lawn']
+			},
+			methods: {
+				addMsg: function(){
+					this.items.push(this.newMsg);
+					this.newMsg = '';
+				}
+			}
+		})
+	</script>
+</body>
+</html>

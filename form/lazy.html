@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+
+	<!-- lazy 就是在失焦的时候改变数据 -->
+	<div class="demo">
+		<input type="text" v-model.lazy="msg">
+		<p>{{ msg }}</p>
+		<span v-pre>{{ this will not be compiled }}</span>
+	</div>
+
+	<script>
+		var d = new Vue({
+			el: '.demo',
+			data: {
+				msg: ''
+			}
+		})
+	</script>
+</body>
+</html>

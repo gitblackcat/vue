@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		div{
+			width: 100px;
+			height: 100px;
+			background-color: red;
+		}
+	</style>
+	<script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+	<div :style="{transform: rotateStyle}"></div>
+
+	<script>
+		var auto = new Vue({
+			el: 'div',
+			data: {
+				rotateStyle: 'rotateZ(45deg)'
+			}
+		})
+	</script>
+</body>
+</html>

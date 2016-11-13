@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.box{
+			width: 100px;
+			height: 100px;
+			background-color: red;
+		}
+	</style>
+	<script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+	<ul class="demo">
+		<template v-for="(item,index) in items">
+			<li>{{item.text}}</li>
+			<li>{{index}}</li>  
+			<li class="box"></li>
+		</template>
+	</ul>
+
+	<script>
+		var d = new Vue({
+			el: '.demo',
+			data: {
+				items: [
+					{ text: 'Learn JavaScript' },
+					{ text: 'Learn Vue' },
+					{ text: 'Build something awesome' }
+				]
+			}
+		})
+
+		//index索引代表的是一个源数据数组中一个对象整体,所以这里也可以看做是一整个template,而不是一个li
+	</script>
+</body>
+</html>

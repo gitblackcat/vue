@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+	<ul class="demo">
+		<li v-for="(value,key,index) in objects">
+			{{ index }} - {{ key }} - {{ value }}
+		</li>
+	</ul>
+
+	<script>
+		var d = new Vue({
+			el: '.demo',
+			data: {
+				objects: {
+					name: 'yzd',
+					age: '99'
+				}
+			}
+		})
+
+		//在遍历对象时，是按 Object.keys() 的结果遍历，但是不能保证它的结果在不同的 JavaScript 引擎下是一致的
+	</script>
+</body>
+</html>

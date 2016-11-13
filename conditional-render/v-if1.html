@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+	<div class="test">
+		<div v-if="Math.random() > 0.5">BIG</div>
+		<div v-else>SMALL</div>
+	</div>
+
+	<!-- 这个需要有个父容器用于vue挂载 否则v-if为真的时候,v-else并不消失 -->
+	
+
+	<script>
+		var i = new Vue({
+			el: '.test'
+		})
+	</script>
+</body>
+</html>

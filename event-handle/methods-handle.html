@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+	<div class="demo">
+		<button @click="greet">greet</button>
+	</div>
+
+	<script>
+		var d = new Vue({
+			el: '.demo',
+			data: {
+				name: 'Vue!'
+			},
+			methods: {
+				greet: function(event){
+					alert( this.name + '' ); //输出的必须是字符串,所以这里要加''
+					alert( event.target.tagName );
+				}
+			}
+		})
+	</script>
+</body>
+</html>

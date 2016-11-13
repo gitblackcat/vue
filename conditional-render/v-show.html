@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+	<div class="test">
+		<div v-show="ok">yes</div>
+	</div>
+
+	<script>
+		var s = new Vue({
+			el: 'div',
+			data: {
+				ok: true
+			}
+		})
+	</script>
+
+	<!-- v-show 的元素会始终渲染并保持在 DOM 中。v-show 是简单的切换元素的 CSS 属性 display -->
+	<!-- v-show 不支持 <template> 语法 -->
+	<!-- v-if 有更高的切换消耗而 v-show 有更高的初始渲染消耗。因此，如果需要频繁切换使用 v-show 较好，如果在运行时条件不大可能改变则使用 v-if 较好 -->
+</body>
+</html>

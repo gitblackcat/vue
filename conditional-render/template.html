@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+	<!-- <div> -->
+		<template v-if="ok">
+			<p>I'm p1</p>
+			<p>I'm p2</p>
+		</template>
+	<!-- </div> -->
+	
+	<!-- 不能把template作为组件根元素 可以在template外包一个元素用于vue挂载 -->
+	<!-- body和html不能用于vue的挂载 -->
+
+	<script>
+		var i = new Vue({
+			el: 'template',
+			data: {
+				ok: true
+			}
+		})
+	</script>
+</body>
+</html>

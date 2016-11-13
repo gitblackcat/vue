@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+	<ul class="demo">
+		<!-- 这里的in可以替换成of 等同效果 -->
+		<li v-for="(item,index) of items">
+			{{ parentMsg }} - {{ index }} - {{ item.text }}
+		</li>
+	</ul>
+
+	<script>
+		var d = new Vue({
+			el: '.demo',
+			data: {
+				parentMsg: 'father',
+				items: [
+					{ text: 'Learn JavaScript' },
+					{ text: 'Learn Vue' },
+					{ text: 'Build something awesome' }
+				]
+			}
+		})
+
+		//在 v-for 块中，我们拥有对父作用域属性的完全访问权限 所以它可以访问到parentMsg里的东西
+		//index为索引
+	</script>
+</body>
+</html>
