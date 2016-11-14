@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+	<table class="demo">
+		<tr is="my-tr" v-for="trItem in trItems">
+			<td is="my-td" v-for="tdItem in trItem.tdItems">
+				{{ tdItem.number }}
+			</td>
+		</tr>
+	</table>
+
+	<script>
+		var aTr = {
+				template: '<tr></tr>'
+			},
+			aTd = {
+				template: '<td></td>'
+			};
+
+		var demo = new Vue({
+			el: '.demo',
+			data: {
+				trItems: [
+					{ 
+						tdItems: [{ number: '1' },{ number: '2' },{ number: '3' }] 
+					},
+					{ 
+						tdItems: [{ number: '4' },{ number: '5' },{ number: '6' }] 
+					},
+					{ 
+						tdItems: [{ number: '7' },{ number: '8' },{ number: '9' }] 
+					}
+				]
+			},
+			components: {
+				'my-tr': aTr,
+				'my-td': aTd
+			}
+		});
+	</script>
+</body>
+</html>

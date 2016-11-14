@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+	<div class="demo">
+		<my-component></my-component>
+	</div>
+
+	<div class="example">
+		<my-component></my-component>
+	</div>
+
+	<script>
+
+	//对于自定义标签名 Vue.js 不强制要求遵循 W3C规则(小写，并且包含一个短杠)尽管遵循这个规则比较好
+	// 这种组件注册方式时全局注册,任何一个作用域都能使用
+		Vue.component('my-component',{
+			template: '<div>Hello,I am component.</div>'
+		})
+
+		var vm = new Vue({
+			el: '.demo'
+		});
+
+		var example = new Vue({
+			el: '.example'
+		})
+	</script>
+</body>
+</html>
