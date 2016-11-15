@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+	<child class="demo" msg="hello"></child>
+
+	<script>
+		Vue.component('child',{
+			props: ['msg'],
+			template: '<span>{{msg}}</span>'
+		})
+
+		var vm = new Vue({
+			el: '.demo'
+		})
+	</script>
+</body>
+</html>

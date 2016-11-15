@@ -15,11 +15,13 @@
 	</table>
 
 	<script>
+	//需要包含特定的元素的元素里面不能写组件标签,而是要用is属性,不符合html标准规范,否则会无效或者报错
+
 		var aTr = {
-				template: '<tr></tr>'
+				template: '<tr><slot></slot></tr>'
 			},
 			aTd = {
-				template: '<td></td>'
+				template: '<td><slot></slot></td>'
 			};
 
 		var demo = new Vue({

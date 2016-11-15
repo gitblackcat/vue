@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+	<div class="demo1">
+		<my-button></my-button>
+		<my-button></my-button>
+		<my-button></my-button>
+	</div>
+
+	<script>
+	//data必须是一个函数
+
+		var data = {
+			count: 0
+		}
+
+		Vue.component('my-button',{
+			template: "<button type='button' @click='count++'>{{count}}</button>",
+			data: function(){
+				return data;
+			}
+		})
+
+		var vm1 = new Vue({
+			el: '.demo1'
+		})
+	</script>
+
+	<div class="demo2">
+		<my-count></my-count>
+		<my-count></my-count>
+		<my-count></my-count>
+	</div>
+
+	<script>
+		Vue.component('my-count',{
+			template: '<button type="button" @click=" n += 1 ">{{n}}</button>',
+			data: function(){
+				return { n: 0 };
+			}
+		})
+
+		var vm2 = new Vue({
+			el: '.demo2'
+		})
+	</script>
+</body>
+</html>
