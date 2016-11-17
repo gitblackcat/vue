@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+	<div class="demo">
+		<p>{{ total }}</p>
+		<!-- html特性不区分大小写,所以这里不能写驼峰,可以是横杠 -->
+		<my-btn @single-total="addTotal"></my-btn>
+		<my-btn @single-total="addTotal"></my-btn>
+	</div>
+
+	<script>
+		Vue.component('my-btn',{
+			template: '<button type="button" @click="singleBtn">{{ count }}</button>',
+			data: function(){
+				return {
+					count: 0
+				}
+			},
+			methods: {
+				singleBtn: function(){
+					this.count++;
+					this.$emit('single-total');
+				}
+			}
+		})
+
+		var vm = new Vue({
+			el: '.demo',
+			data: {
+				total: 0
+			},
+			methods: {
+				addTotal: function(){
+					this.total++;
+				}
+			}
+		})
+	</script>
+</body>
+</html>
