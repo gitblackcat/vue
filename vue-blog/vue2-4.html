@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+	<!-- 事件绑定 -->
+
+	<!-- 创建一个绑定vue组件的元素,这里制定id为yzd04的div -->
+	<div id="yzd4">
+		<p>{{vue_yzd4}}</p>
+		<button type="button" v-on:click="reverseEvent">reverseEvent</button>
+	</div>
+	<!-- v-on:click将会绑定当前标签的click事件,这个事件与vue实例中methods属性中的reverseEvent相对应 -->
+
+	<script>
+		var yzd4 = new Vue({
+			el: "#yzd4",
+			data: {
+				vue_yzd4: "hello vuejs"
+			},
+			methods: {
+				reverseEvent: function(){
+					this.vue_yzd4 = this.vue_yzd4.split('').reverse().join('')
+				}
+			}
+		})
+		// 创建vue实例的时候初始化一个“reverseEvent”的事件,作用是将vue_yzd4的值倒序
+	</script>
+</body>
+</html>

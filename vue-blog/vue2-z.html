@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+	<div id="yzd">
+		<p>{{vue_yzd}}</p>
+		<input type="text" v-model="vue_yzd">
+		<ul>
+			<li v-for="book in books">
+				{{"name: " + book.name + ", " + "price: " + book.price}}
+			</li>
+		</ul>
+		<button type="button" v-on:click="reverseEvent">reverseEvent</button>
+	</div>
+
+	<script>
+		var yzd = new Vue({
+			el: "#yzd",
+			data: {
+				vue_yzd: "hello vuejs",
+				books: [
+					{ name: "book1",price: "price1" },
+					{ name: "book2",price: "price2" },
+					{ name: "book3",price: "price3" }
+				]
+			},
+			methods: {
+				reverseEvent: function(){
+					this.vue_yzd = reverseStr(this.vue_yzd)
+					this.books.forEach(function(item, index, array) {
+						for(key in item){
+							item[key] = reverseStr(item[key])
+						}
+					})
+					function reverseStr(str){
+						return str.split('').reverse().join('')
+					}
+				}
+			}
+		})
+	</script>
+</body>
+</html>

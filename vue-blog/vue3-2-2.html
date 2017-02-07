@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+	<!-- 三元表达式 -->
+
+	<!-- 在做三元表达式的时候,mastache整体内容只能是三目运算,不能有其他东西 -->
+
+	<div id="yzd2">
+		<p>ok01 is true: {{ ok01 ? "ok01" : "cancel01" }}</p>
+		<p>ok02 is true: {{ ok02 ? "ok02" : "cancel02" }}</p>
+		<p>ok03 is hello: {{ ok03 === "hello" ? "ok03" : "cancel03" }}</p>
+		<p>ok04 is "": {{ ok04 === "" ? "ok04" : "cancel04" }}</p>
+		{{123}}
+	</div>
+
+	<!-- 
+		在mustache中写的文字是有引号的,或者写的是数字,那么直接会被渲染出来;如果文字是没有引号,那么引用的就是实例中的data内的内容 
+	-->
+
+	<script>
+		var yzd2 = new Vue({
+			el: "#yzd2",
+			data: {
+				ok01: true,
+				ok02: false,
+				ok03: "hello",
+				ok04: ""
+			}
+		})
+	</script>
+</body>
+</html>

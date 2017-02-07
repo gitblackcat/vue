@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+	<!-- 纯HTML -->
+
+	<div id="yzd1" v-html="vue_yzd1"></div>
+
+
+	<!-- 双大括号默认显示的是在data中定义的字符串,即便是html文本,也会原样输出 -->
+
+	<!-- 
+		例如,我们在data中定义了msgHtml：'<h1 style="color: red;">hello vuejs</h1>',为了在页面中也显示的是html代码,我们只需要正常取值就ok：{{msgHtml}}.但是,如果要将我们的字符串文本在页面显示为正常的文档流,则要使用v-html 
+	-->
+
+	<script>
+		var yzd1 = new Vue({
+			el: "#yzd1",
+			data: {
+				vue_yzd1: "<h1 style='color: red;'>hello vuejs</h1>"
+			}
+		})
+	</script>
+</body>
+</html>
