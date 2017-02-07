@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+	<!-- 列表渲染 -->
+
+	<!-- 创建要绑定vue组件的元素,这里制定id为yzd3的div -->
+	<div id="yzd3">
+		<ul>
+			<li v-for="book in books">
+				{{"name: " + book.name + ", " + "price: " + book.price}}
+			</li>
+		</ul>
+	</div>
+
+	<!-- 
+		v-for="book in books"将会从vue实例中取出books（数组）遍历,遍历的时候将数组中的每一个对象定义为book.{{book.name}}表示从book中取出name属性的值,{{book.price}}表示从book中取出price属性的值
+	-->
+
+	<script>
+		var yzd3 = new Vue({
+			el: "#yzd3",
+			data: {
+				books: [
+					{ name: "book1",price: "price1" },
+					{ name: "book2",price: "price2" },
+					{ name: "book3",price: "price3" }
+				]
+			}
+		})
+
+		/*
+			相当于
+			for(var i=0; i<books.length; i++){
+				var book = books[i]
+			}
+		*/
+	</script>
+</body>
+</html>

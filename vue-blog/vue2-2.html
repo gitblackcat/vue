@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+	<!-- 数据双向绑定 -->
+
+	<!-- 创建要绑定的vue组件的元素,这里制定id为yzd2的div -->
+	<div id="yzd2">
+		<p>{{vue_yzd2}}</p>
+		<input type="text" v-model="vue_yzd2">
+		<!-- 
+			输入框v-model="vue_yzd2"属性将当前元素的值与vue组件中的vue_yzd2绑定.当一方发生变化后,不管是输入框中的值变化,还是组件内值的变化,都会相互影响,发生改变,并让其他引用该值的元素改变.在vue组件中所有引用vue_yzd2的地方都会发生变化.这里当input输入框的信息发生更改后.p标签的{{vue_yzd2}}也会跟随渲染更新数据 
+		-->
+	</div>
+
+	<script>
+		var yzd2 = new Vue({
+			el: "#yzd2",
+			data: {
+				vue_yzd2: "ccc"
+			}
+		})
+	</script>
+</body>
+</html>

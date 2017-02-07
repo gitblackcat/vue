@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+	<!-- 过滤器 -->
+
+	<!-- 
+		Vue 2.x 中,过滤器只能在 mustache 绑定和 v-bind 表达式(从 2.1.0 开始支持)中使用,因为过滤器设计目的就是用于文本转换.为了在其他指令中实现更复杂的数据变换,应该使用计算属性
+	 -->
+
+	<div id="yzd2">
+		<ul>
+			<li v-for="book in books">
+				name: {{book.name | lowercase}}, price: {{book.price | currency}}
+			</li>
+		</ul>
+	</div>
+
+	<script>
+		var yzd2 = new Vue({
+			el: "#yzd2",
+			data: {
+				books: [
+					{ name: "《精通Spring》",price: "38.80" },
+					{ name: "《精通Hibiernate》",price: "28.80" },
+					{ name: "《精通Jquery》",price: "25.99" },
+					{ name: "《精通Vue》",price: "18.88" }
+				]
+			},
+			filters: {
+				lowercase: function(value){
+					return value.toLocaleLowerCase()
+				},
+				currency: function(value){
+					return "$" + value
+				}
+			}
+		})
+	</script>
+</body>
+</html>
