@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+	<div id="yzd3">
+		<ul>
+			<li v-for="(item,index) in items">
+				{{index}} - {{item.text}}
+			</li>
+		</ul>
+		<hr>
+		<ul>
+			<li v-for="todo in todos">
+				{{todo}}
+			</li>
+		</ul>
+		<hr>
+		<ul>
+			<li v-for="value in obj">
+				{{value}}
+			</li>
+		</ul>
+		<hr>
+		<ul>
+			<!-- value代表属性值,key代表属性,index代表索引 -->
+			<li v-for="(value,key,index) in obj">
+				{{index}} - {{key}} - {{value}}
+			</li>
+		</ul>
+		<hr>
+		<ul>
+			<li v-for="n in 10">
+				{{n}}
+			</li>
+		</ul>
+	</div>
+
+	<script>
+		var yzd3 = new Vue({
+			el: "#yzd3",
+			data: {
+				items: [
+					{ text: "a" },
+					{ text: "b" },
+					{ text: "c" }
+				],
+				todos: ["1","2","3"],
+				obj: {
+					text1: "one",
+					text2: "two",
+					text3: "three"
+				}
+			}
+		})
+	</script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+	<div id="yzd4">
+		<ul>
+			<li v-for="(item,index) in items">
+				<div v-on:click="itemClick01">
+					<span>index: {{index}},item: {{item}}</span>
+					<button type="button" v-on:click="itemClick02(item,index)">
+						内联语句(item为参数)
+					</button>
+					<button type="button" v-on:click="itemClick03(item,$event)">
+						内联语句(event为参数)
+					</button>
+					<button type="button" @:click.stop="itemClickStop(item)">
+						阻止冒泡
+					</button>
+					<a href="http://www.baidu.com">跳转到百度</a>
+					<a href="http://www.baidu.com" @click.prevent="itemClickPrevent">
+						阻止a标签默认行为，不会跳转到百度
+					</a>
+					<input type="text" @keyup.enter="keyUpEnter($event)" v-model="message">
+				</div>
+			</li>
+		</ul>
+	</div>
+
+	<script>
+		var yzd4 = new Vue({
+			el: "#yzd4",
+			data: {
+				items: ["itemA","itemB","itemC","itemD"],
+				message: "获取焦点后,点击enter试试"
+			},
+			methods: {
+				itemClick01: function(){
+					console.log('u click the button')
+				},
+				itemClick02: function(item,index){
+					console.log("current index: " + index + "; item: " + item)
+				},
+				itemClick03: function(item,event){
+					console.log("current item: " + item + "; event target tagName: " + event.target.tagName)
+				},
+				itemClickStop: function(event){
+					console.log("child button is clicked,please watch whether the parent div's log is priented!")
+				},
+				itemClickPrevent: function(){
+					console.log("Prevent Default behaviour")
+				},
+				keyUpEnter: function(event){
+					console.log("keyCode: " + event.keyCode)
+					this.message = event.keyCode
+				}
+			}
+		})
+	</script>
+</body>
+</html>

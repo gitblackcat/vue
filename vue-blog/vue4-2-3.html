@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+	<div id="yzd2">
+		<h1 v-show="seen">
+			{{message}}
+		</h1>
+	</div>
+
+	<!-- v-if的真假直接导致DOM是否渲染;而v-show不管真假,DOM都会渲染,只是当条件为假时,style.display = "none" -->
+	<!-- 
+		一般来说, v-if 有更高的切换消耗而 v-show 有更高的初始渲染消耗.因此,如果需要频繁切换使用 v-show 较好,如果在运行时条件不大可能改变则使用 v-if 较好
+	 -->
+
+	<script>
+		var yzd2 = new Vue({
+			el: "#yzd2",
+			data: {
+				seen: false,
+				message: "v-show"
+			}
+		})
+	</script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+	<div id="yzd2">
+		<template v-if="str === 'a'">
+			<h1>a</h1>
+			<p>apple</p>
+		</template>
+		<template v-else-if="str === 'b'">
+			<h1>b</h1>
+			<p>banana</p>
+		</template>
+		<template v-else>
+			<h1>SB</h1>
+			<p>silly boy</p>
+		</template>
+	</div>
+
+	<script>
+		var yzd2 = new Vue({
+			el: "#yzd2",
+			data: {
+				str: "a"
+			}
+		})
+	</script>
+</body>
+</html>

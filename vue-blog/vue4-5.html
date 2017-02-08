@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.red{
+			color: red;
+		}
+		.classArr1{
+			width: 500px;
+			height: 500px;
+		}
+		.classArr2{
+			border: 20px dashed #ff0;
+		}
+		.classB{
+			text-align: center;
+		}
+		.classC{
+			line-height: 500px;
+			background: #c5c5c5;
+		}
+		.test{
+			box-shadow: inset 0 0 10px rgba(255,0,0,0.5);
+		}
+	</style>
+	<script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+	<div id="yzd5">
+		<img v-bind:src="imgPath">
+		<hr>
+		<div v-bind:style="{'fontSize': size + 'px'}">绑定对象style</div>
+		<hr>
+		<div v-bind:style="[styleArr1,styleArr2]">绑定数组style</div>
+		<hr>
+		<div :class="{'red': isRed}">绑定对象class</div>
+		<hr>
+		<div :class="[classArr1,classArr2,'test']">绑定数组class</div>
+		<hr>
+		<div :class="[classArr1,{'classB': isB,'classC': isC}]">混合对象和数组</div>
+		<hr>
+		<div :class="classObj">绑定数据里的一个对象</div>
+	</div>
+
+	<script>
+		var yzd5 = new Vue({
+			el: "#yzd5",
+			data: {
+				imgPath: "../img/mvvm.png",
+				size: "30",
+				styleArr1: {
+					width: "200px",
+					height: "200px"
+				},
+				styleArr2: {
+					border: "10px solid #000"
+				},
+				isRed: true,
+				classArr1: "classArr1",
+				classArr2: "classArr2",
+				isB: true,
+				isC: true,
+				classObj: {
+					classArr1: true,
+					classB: true,
+					classC: true
+				}
+			}
+		})
+	</script>
+
+	<!-- 指令内的引号内的文字没有引号,那么就是表达式,要引用实例内的数据;如果文字有引号,或者是对象的属性(其实还是默认有引号),那么是直接输出 -->
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+	<!-- 指令 (Directives) 是特殊的带有前缀 v- 的特性.指令的值限定为绑定表达式,因此上面提到的 JavaScript 表达式及过滤器规则在这里也适用.指令的职责就是当其表达式的值改变时把某些特殊的行为应用到 DOM 上 -->
+
+	<div id="yzd1">
+		<h1 v-text="vue_yzd1"></h1>
+	</div>
+
+	<!-- 
+		v-text指令用来更新文本内容,相当于{{mustache}}.但如果只想更新一个节点里面的部分文本内容的时候,那么就只能用{{mustache}}
+	 -->
+
+	<script>
+		var yzd1 = new Vue({
+			el: "#yzd1",
+			data: {
+				vue_yzd1: "This is v-text"
+			}
+		})
+	</script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+	<div id="yzd2">
+		<h1 v-if="flag">true</h1>
+		<h1 v-else>false</h1>
+	</div>
+
+	<!-- 
+		v-else只能跟在v-if或者v-else-if后面,其他指令后面的v-else指令一律无效
+	 -->
+
+	<script>
+		var yzd2 = new Vue({
+			el: "#yzd2",
+			data: {
+				flag: true
+			}
+		})
+	</script>
+
+	<!-- 
+		当v-for和v-if共存于同一节点上时,v-for具有比v-if更高的优先级.这意味着v-if将分别在循环的每次迭代上运行.当只想要渲染列表的部分节点时非常有用,如:
+		
+		<li v-for="todo in todos" v-if="!todo.isComplete">
+		  {{ todo }}
+		</li>
+	-->
+
+</body>
+</html>
