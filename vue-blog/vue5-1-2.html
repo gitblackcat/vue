@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+	<!-- 属性计算&set -->
+
+	<div id="yzd1">
+		<div>
+			firstName:
+			<input type="text" v-model="firstName">
+		</div>
+		<div>
+			lastName: 
+			<input type="text" v-model="lastName">
+		</div>
+		<div>
+			fullName
+			<input type="text" v-model="fullName" disabled="disabled">
+		</div>
+	</div>
+
+	<script>
+		// 对fullName我们采用计算属性的方式：把fullName定义为一个返回值为firstName+lastName的方法.这样,当firstName或者lastName发生数据变更的时候,fullName通过计算属性也会发生变化,进行实时更新
+
+		var yzd1 = new Vue({
+			el: "#yzd1",
+			data: {
+				firstName: "zd",
+				lastName: "y"
+			},
+			computed: {
+				fullName: {
+					get: function(){
+						return this.firstName + ' ' + this.lastName
+					},
+					// 使用set是为了当fullName改变的时候,firstName和lastName改变
+					set: function(value){
+						var name = value.split(' ')
+						this.firstName = name[0]
+						this.lastName = name[1]
+					}
+				}
+			}
+		})
+	</script>
+</body>
+</html>

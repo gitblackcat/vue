@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+	<!-- 计算属性&watch -->
+
+	<!-- 
+		双向数据绑定的时候我们经常会遇到这样的情况：数据3=数据1+数据2,我们单独更新数据1或者数据2以后,数据3需要实时更新.有两种实现方式,以下为方法一
+	-->
+
+	<div id="yzd1">
+		<div>
+			firstName:
+			<input type="text" v-model="firstName">
+		</div>
+		<div>
+			lastName: 
+			<input type="text" v-model="lastName">
+		</div>
+		<div>
+			fullName
+			<input type="text" v-model="fullName">
+		</div>
+	</div>
+
+	<script>
+		var yzd1 = new Vue({
+			el: "#yzd1",
+			data: {
+				firstName: "zd",
+				lastName: "y",
+				fullName: "zd y"
+			},
+			//为了实时更新数据fullName,我们需要对firstName和lastName进行观察,即加上yzd1.$watch语句
+			watch: {
+				firstName: function(value){
+					this.fullName = value + ' ' + this.lastName
+				},
+				lastName: function(value){
+					this.fullName = this.firstName + ' ' + value
+				},
+				// 观察fullName是为了当fullName变动时候,firstName和lastName改变
+				fullName: function(value){
+					var name = value.split(' ')
+					this.firstName = name[0]
+					this.lastName = name[1]
+				}
+			}
+		})
+
+	</script>
+</body>
+</html>
