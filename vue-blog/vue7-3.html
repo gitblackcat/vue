@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+	<!-- radio -->
+
+	<div id="yzd3">
+		<!-- 如果所在行有v-model指令,那么在该行checked="checked"就不需要了 会被忽略 不起作用 vue会报警告 -->
+		<input type="radio" v-model="picked" value="man" id="man">
+		<label for="man">man</label>
+		<br>
+		<input type="radio" v-model="picked" value="female" id="female">
+		<label for="female">female</label>
+		<hr>
+		<span>Picked: {{picked}}</span>
+	</div>
+
+	<script>
+		var yzd3 = new Vue({
+			el: "#yzd3",
+			data: {
+				picked: ""
+			}
+		})
+	</script>
+</body>
+</html>

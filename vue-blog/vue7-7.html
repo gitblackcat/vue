@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+	<!-- v-model修饰符 -->
+
+	<div id="yzd7">
+		<!-- 
+			lazy,延迟数据更新,这里并不是说取数据的时候才要更新数据,而是说在绑定的值确定发生变化的时候才要更新数据,示例中是触发onchange的时候更新数据,简单的说就是当input失去焦点的时候触发数据更新
+		 -->
+		<h1>lazy: {{messageLazy}}</h1>
+		<input type="text" v-model.lazy="messageLazy">
+		<hr>
+		<!-- 
+			number,在绑定的元素上添加number属性,如果当前的数值可以转化为number,则更新后的数据为number类型,如果当前的数值不能转化为number类型,则更新后的数据一般转化为string类型 
+		-->
+		<h1>number: {{messageNum}}</h1>
+		<input type="number" v-model.number="messageNum">
+		<hr>
+		<h1>参照组: 无trim:{{messageRefer}}</h1>
+		<input type="text" v-model="messageRefer">
+		<hr>
+		<h1>实验组: 有trim:{{messageTrim}}</h1>
+		<input type="text" v-model.trim="messageTrim">
+	</div>
+
+	<script>
+		var yzd7 = new Vue({
+			el: "#yzd7",
+			data: {
+				messageLazy: "",
+				messageNum: "",
+				messageRefer: "",
+				messageTrim: ""
+			}
+		})
+	</script>
+</body>
+</html>

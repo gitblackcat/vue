@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+	<!-- 按住ctrl选择,可以实现多选 -->
+
+	<div id="yzd5">
+		<select v-model="selected" multiple>
+			<option>a</option>
+			<option>b</option>
+			<option>c</option>
+			<option>d</option>
+		</select>
+		<hr>
+		<span>Selected: {{selected}}</span>
+	</div>
+
+	<script>
+		var yzd5 = new Vue({
+			el: "#yzd5",
+			data: {
+				selected: []
+			}
+		})
+	</script>
+</body>
+</html>

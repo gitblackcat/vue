@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+	<!-- 使用props传递数据 -->
+	<div id="yzd1">
+		<child message="hello vuejs"></child>
+	</div>
+
+	<!-- 组件实例的作用域是孤立的.这意味着不能并且不应该在子组件的模板内直接引用父组件的数据.可以使用 props 把数据传给子组件 -->
+
+	<script>
+		Vue.component("child",{
+			props: ["message"],
+			template: "<h1>{{message}}</h1>",
+			//props优先级要高于子组件自身的data,所以不显示123,而是hello vuejs
+			data: function(){
+				return { message: "123" }
+			}
+		})
+
+		var yzd1 = new Vue({
+			el: "#yzd1"
+		})
+	</script>
+</body>
+</html>

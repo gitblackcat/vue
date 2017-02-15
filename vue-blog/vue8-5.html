@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+	<!-- DOM模板解析 & is特性 -->
+
+	<div>
+	    <span>
+	    	当使用 DOM 作为模版时（例如,将 el 选项挂载到一个已存在的元素上）, 你会受到 HTML 的一些限制,因为 Vue 只有在浏览器解析和标准化 HTML 后才能获取模版内容(Vue 的模板是 DOM 模板,使用浏览器原生的解析器而不是自己实现一个)
+	    </span>
+	    <ul>
+	        <li>a标签不能包含其他的交互元素（按钮和链接）</li>
+	        <li>ul和ol只能直接包含li</li>
+	        <li>select只能包含option和optgroup</li>
+	        <li>table只能包含thead、tbody、tr、caption、col、colgroup</li>
+	        <li>tr只能直接包含th、td</li>
+	    </ul>
+	    <span>
+	    	另外,自定义个组件不是有效的模板,即便my-select组件最终展开为select下拉菜单片段,也会解析失败
+	    </span>
+	</div>
+	<div id="yzd5">
+		<!-- <ul>
+			<li is="my-component"></li>
+		</ul> -->
+		<table>
+			<tr is="my-component"></tr>
+		</table>
+	</div>
+
+	<script>
+		var yzd5 = new Vue({
+			el: "#yzd5",
+			components: {
+				"my-component": {
+					// template: "<h1>{{message}}</h1>",
+					//直接用以上的,将不会出现tr,而是h1替代tr
+					template: "<tr><td>{{message}}</td></tr>",
+					data: function(){
+						return { message: "hello vuejs" }
+					}
+				}
+			}
+		})
+
+		/*
+			应当注意,如果使用来自以下来源之一的字符串模板,这些限制将不适用
+			<script type="text/x-template">
+			JavaScript内联模版字符串
+			.vue 组件
+			因此,有必要的话请使用字符串模版
+		*/
+	</script>
+</body>
+</html>

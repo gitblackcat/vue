@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+	<!-- 动态Props -->
+	<div id="yzd3">
+		<input type="text" v-model="message" placeholder="please input something">
+		<my-show :parent-msg="message"></my-show>
+	</div>
+
+	<script>
+		Vue.component("my-show",{
+			props: ["parentMsg"],
+			template: "<div>{{parentMsg}}</div>"
+		})
+
+		var yzd3 = new Vue({
+			el: "#yzd3",
+			data: {
+				message: ""
+			}
+		})
+	</script>
+</body>
+</html>

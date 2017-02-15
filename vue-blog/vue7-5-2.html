@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+	<div id="yzd5">
+		<select v-model="selected">
+			<option v-for="todo in todos" :value="todo.value">
+				{{todo.text}}
+			</option>
+		</select>
+		<hr>
+		<span>Selected: {{selected}}</span>
+	</div>
+
+	<!-- 其实选择出来的还是value值 -->
+
+	<script>
+		var yzd5 = new Vue({
+			el: "#yzd5",
+			data: {
+				todos: [
+					{ value: "a",text: "one" },
+					{ value: "b",text: "two" },
+					{ value: "c",text: "three" }
+				],
+				selected: []
+			}
+		})
+	</script>
+</body>
+</html>

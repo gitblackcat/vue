@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+	<!-- 组件&data必须是函数 -->
+
+	<!-- 使用组件时,大多数可以传入到 Vue 构造器中的选项可以在注册组件时使用,有一个例外： data 必须是函数 -->
+
+	<!-- data为函数的目的是做到变量私有化 -->
+
+	<div id="yzd4">
+		<my-component></my-component>
+	</div>
+
+	<script>
+		var yzd4 = new Vue({
+			el: "#yzd4",
+			components: {
+				"my-component": {
+					template: "<div>name: {{name}},age: {{age}}</div>",
+					data: function(){
+						return {
+							name: "yzd",
+							age: 25
+						}
+					}
+				}
+			}
+		})
+	</script>
+</body>
+</html>

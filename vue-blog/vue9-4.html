@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+	<!-- 字面量语法 VS 动态语法 -->
+
+	<!-- 
+		如果在为vue组件prop定义或者赋值的时候用了"v-bind:"的动态语法,则会先将其转化为js表达式,然后计算结果赋值
+	-->
+	<div id="yzd4">
+		<child parent-msg="1+1"></child>
+		<child :parent-msg="1+1"></child>
+	</div>
+
+	<script>
+		Vue.component("child",{
+			props: ["parentMsg"],
+			template: "<h1>{{parentMsg}}</h1>"
+		})
+
+		var yzd4 = new Vue({
+			el: "#yzd4"
+		})
+	</script>
+</body>
+</html>

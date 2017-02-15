@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+	<!-- 组件&全局注册 -->
+
+	<!-- 
+		组件（Component）是 Vue.js 最强大的功能之一.组件可以扩展 HTML 元素,封装可重用的代码.在较高层面上,组件是自定义元素, Vue.js 的编译器为它添加特殊功能.在有些情况下,组件也可以是原生 HTML 元素的形式,以 js 特性扩展
+	 -->
+
+	 <!-- 自定义标签名最好是小写并有短横号 -->
+
+	<div id="yzd1">
+		<span>1、下面的是一个全局的构造器</span>
+		<global-component></global-component>
+	</div>
+
+	<div id="yzd2">
+		<span>2、下面的是一个全局的构造器</span>
+		<global-component></global-component>
+	</div>
+
+	<script>
+		Vue.component("global-component",{
+			template: "<div>This is a global component</div>"
+		})
+
+		var yzd1 = new Vue({
+			el: "#yzd1"
+		})
+
+		var	yzd2 = new Vue({
+			el: "#yzd2"
+		})
+	</script>
+</body>
+</html>

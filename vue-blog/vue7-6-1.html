@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+	<!-- 绑定value -->
+
+	<div id="yzd6">
+		<!-- 如果没有value特性,单选按钮不成立 -->
+		<input type="radio" id="man" v-model="radioChecked" :value="man">
+		<label for="man">man</label>
+		<input type="radio" id="female" v-model="radioChecked" :value="female">
+		<label for="female">female</label>
+		<hr>
+		<span>radioChecked: {{radioChecked}}</span>
+		<hr>
+		<input type="checkbox" v-model="checked" id="checkbox">
+		<label for="checkbox">The checkbox value: {{checked | behavior}}</label>
+	</div>
+
+	<script>
+		var yzd6 = new Vue({
+			el: "#yzd6",
+			data: {
+				radioChecked: "男",
+				man: "男",
+				female: "女",
+				checked: false
+			},
+			filters: {
+				behavior: function(value){
+					var flag = "unchecked"
+					value === false ? flag : flag = "checked" 
+					return flag
+				}
+			}
+		})
+	</script>
+</body>
+</html>

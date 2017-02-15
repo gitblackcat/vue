@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+	<!-- checkbox -->
+
+	<div id="yzd2">
+		<!-- 第一个复选框没有value属性，绑定了model为"checked"，默认值是布尔类型，选中为true，未选中为false -->
+		<input id="checkbox" type="checkbox" v-model="checked">
+		<label for="checkbox">
+			The checkbox is checked: {{checked}}
+		</label>
+
+		<hr>
+		<input type="checkbox" id="box01" value="box01" v-model="checkedNames">
+		<label for="box01">box01</label>
+		<input type="checkbox" id="box02" value="box02" v-model="checkedNames">
+		<label for="box02">box02</label>
+		<input type="checkbox" id="box03" value="box03" v-model="checkedNames">
+		<label for="box03">box03</label>
+		<br>
+		<span>CheckedNames:{{checkedNames}}</span>
+	</div>
+
+	<script>
+		var yzd2 = new Vue({
+			el: "#yzd2",
+			data: {
+				checked: false,
+				checkedNames: []
+			}
+		})
+	</script>
+</body>
+</html>

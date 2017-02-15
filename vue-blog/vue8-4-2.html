@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+	<!-- 组件&data必须是函数 -->
+
+	<!-- 为了让按钮直接互相不影响 -->
+
+	<div id="yzd4">
+		<my-button></my-button>
+		<my-button></my-button>
+		<my-button></my-button>
+	</div>
+
+	<script>
+		// 可以这样写
+		/*
+			var yzd4 = new Vue({
+				el: "#yzd4",
+				components: {
+					"my-button": {
+						template: "<button type='button' @click='addNum'>{{num}}</button>",
+						data: function(){
+							return {
+								num: 0
+							}
+						},
+						methods: {
+							addNum: function(){
+								this.num++
+							}
+						}
+					}
+				}
+			})
+		*/
+
+		var yzd4 = new Vue({
+			el: "#yzd4",
+			components: {
+				"my-button": {
+					template: "<button type='button' @click='num++'>{{num}}</button>",
+					data: function(){
+						return {
+							num: 0
+						}
+					}
+				}
+			}
+		})
+	</script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+	<!-- camelCase(驼峰) vs. kebab-case(横杠) -->
+
+	<div id="yzd2">
+		<div>
+			HTML 特性不区分大小写.名字形式为 camelCase 的 prop 用作特性时,需要转为 kebab-case（短横线隔开）
+		</div>
+		<child my-message="kebab-case"></child>
+	</div>
+
+	<script>
+		Vue.component("child",{
+			props: ["myMessage"],
+			template: "<h1>{{myMessage}}</h1>"
+		})
+
+		var yzd2 = new Vue({
+			el: "#yzd2"
+		})
+
+		//再次说明,如果使用字符串模版,不用在意这些限制
+
+	</script>
+</body>
+</html>
