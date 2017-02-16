@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+	<!-- 自定义事件 -->
+	<template id="yzd3-tem">
+		<div>
+			<input type="text" v-model="msg" placeholder="please input something">
+			<button type="button" @click="notify">input</button>
+		</div>
+	</template>
+	
+	<div id="yzd3">
+		<p>{{message}}</p>
+		<child @notify="pushValue"></child>
+	</div>
+
+	<script>
+		Vue.component("child",{
+			template: "#yzd3-tem",
+			data: function(){
+				return {
+					msg: ""
+				}
+			},
+			methods: {
+				notify: function(){
+					this.msg = this.msg.trim()
+					this.$emit("notify",this.msg)
+					this.msg = ""
+				}
+			}
+		})
+
+		var yzd3 = new Vue({
+			el: "#yzd3",
+			data: {
+				message: []
+			},
+			methods: {
+				pushValue: function(val){
+					this.message.push(val)
+				}
+			}
+		})
+	</script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+	<!-- 子组件索引 -->
+	<!-- 
+		尽管有 props 和 events ,但是有时仍然需要在 JavaScript 中直接访问子组件.为此可以使用 ref 为子组件指定一个索引 ID 
+	-->
+
+	<div id="yzd4">
+		<child01 ref="c01"></child01>
+		<child02 ref="c02"></child02>
+	</div>
+
+	<script>
+		var yzd4 = new Vue({
+			el: "#yzd4",
+			components: {
+				child01: {
+					template: "<h1>This is child01</h1>"
+				},
+				child02: {
+					template: "<h1>This is child02</h1>"
+				}
+			}
+		})
+
+		/*
+			当 v-for 用于元素或组件的时候,引用信息将是包含DOM节点或组件实例数组
+			关于ref注册时间的重要说明: 因为ref本身是作为渲染结果被创建的,在初始渲染的时候你不能访问它们 - 它们还不存在  $refs 也不是响应式的,因此不应该试图用它在模版中做数据绑定
+		*/
+
+		var child01 = yzd4.$refs.c01,
+			child02 = yzd4.$refs.c02
+
+		console.log(child01.$el)
+		console.log(child02.$el)
+	</script>
+</body>
+</html>
