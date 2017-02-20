@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.border{
+			border: 1px solid #f00;
+		}
+	</style>
+	<script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+	<div id="yzd1">
+		<ul :style="styleUl">
+			<li v-for="item in items" @click="taggle(item.name)" :class="[border]" :style="styleLi">
+				{{item.name}}
+			</li>
+		</ul>
+		<component :is="currentView" keep-alive :class="[border]" :style="styleDiv"></component>
+	</div>
+
+	<script>
+		var yzd1 = new Vue({
+			el: "#yzd1",
+			data: {
+				items: [
+					{ name: "tab1" },
+					{ name: "tab2" },
+					{ name: "tab3" }
+				],
+				currentView: "tab1",
+				border: "border",
+				styleUl: {
+					padding: "0",
+					margin: "0"
+				},
+				styleLi: {
+					float: "left",
+					padding: "5px 10px",
+					listStyleType: "none",
+					cursor: "pointer"
+				},
+				styleDiv: {
+					clear: "both"
+				}
+			},
+			methods: {
+				taggle: function(val){
+					this.currentView = val
+				}
+			},
+			components: {
+				tab1: {
+					template: "<div>This is tab1</div>"
+				},
+				tab2: {
+					template: "<div>This is tab2</div>"
+				},
+				tab3: {
+					template: "<div>This is tab3</div>"
+				}
+			}
+		})
+	</script>
+</body>
+</html>

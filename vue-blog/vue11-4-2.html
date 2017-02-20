@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+	<!-- 作用域插槽
+
+
+	 -->
+
+	<template id="tem">
+		<ul>
+		    <slot name="item" v-for="item in items" :text="item.text">
+		        <!-- 这里是备用内容 -->
+		    </slot>
+		</ul>
+	</template>
+
+	<div id="yzd4">
+		<my-awesome-list>
+		    <!-- 作用域插槽也可以被命名 -->
+		    <template slot="item" scope="props">
+		        <li class="my-fancy-item">{{ props.text }}</li>
+		    </template>
+		</my-awesome-list>
+	</div>
+
+	<script>
+		var yzd4 = new Vue({
+			el: "#yzd4",
+			components: {
+				"my-awesome-list": {
+					template: "#tem",
+					data: function(){
+						return {
+							items: [
+								{ text: 1 },
+								{ text: 2 },
+								{ text: 3 }
+							]
+						}
+					}
+				}
+			}
+		})
+	</script>
+</body>
+</html>

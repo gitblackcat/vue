@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+	<!-- 作用域插槽 -->
+	<template id="tem">
+		<div class="child">
+		  	<slot text="hello from child"></slot>
+		</div>
+	</template>
+
+	<div class="parent">
+	    <child>
+	    	<!-- 必须有template并且在其上加上特性scope -->
+	        <template scope="props">
+	            <span>hello from parent</span>
+	            <br>
+	            <span>{{ props.text }}</span>
+	        </template>
+	    </child>
+	</div>
+
+	<script>
+		var parent = new Vue({
+			el: ".parent",
+			components: {
+				child: {
+					template: "#tem"
+				}
+			}
+		})
+	</script>
+</body>
+</html>

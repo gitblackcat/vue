@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+	<!-- 单个slot -->
+	
+	<!-- 
+		为了让组件可以组合,我们需要一种方式来混合父组件的内容与子组件自己的模板.简单点就是说想在子组件里引用父组件的内容,就要用slot.slot就是一个 
+	-->
+
+	<!-- 
+		除非子组件模板包含至少一个 <slot> 插口,否则父组件的内容将会被丢弃 如下例子,意思是,如果把子组件里面的solt标签取消,那么在child标签里面的两个p标签都不会被渲染 
+	-->
+
+	<!-- 
+		当子组件模板只有一个没有属性的 slot 时,父组件整个内容片段将插入到 slot 所在的 DOM 位置,并替换掉 slot 标签本身.最初在 <slot> 标签中的任何内容都被视为备用内容.备用内容在子组件的作用域内编译,并且只有在宿主元素为空,且没有要插入的内容时才显示备用内容. 如下例子,当child标签里面没有p标签,那么slot中的内容会被渲染.如果child标签里面有内容,那么这两个p会替换掉slot,而且被渲染出来
+	-->
+
+	<template id="tem">
+		<div>
+			<div>
+				<h2>我是子组件的标题</h2>
+				<slot>
+			    	只有在没有要分发的内容时才会显示.
+			  	</slot>
+			</div>
+		</div>
+	</template>
+
+	<div id="yzd1">
+		<div>
+			<h1>我是父组件的标题</h1>
+		    <child>
+			    <p>这是一些初始内容</p>
+			    <p>这是更多的初始内容</p>
+		    </child>
+		</div>
+	</div>
+
+	<script>
+		var yzd1 = new Vue({
+			el: "#yzd1",
+			components: {
+				child: {
+					template: "#tem"
+				}
+			}
+		})
+	</script>
+</body>
+</html>

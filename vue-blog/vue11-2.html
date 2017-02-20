@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+	<!-- 编译作用域 -->
+
+	<div id="yzd2">
+		<!-- 
+			message绑定的应该是父组件的数据,也就是yzd2模板中data.message的数据.
+			父组件模板的内容在父组件作用域内编译；子组件模板的内容在子组件作用域内编译.
+		-->
+		<child01>
+			{{message}}
+		</child01>
+		<!-- <child02 v-show="someChildProperty"></child02> -->
+		<child02></child02>
+	</div>
+
+	<script>
+		var yzd2 = new Vue({
+			el: "#yzd2",
+			data: {
+				message: "This is yzd2's data.message"
+			},
+			components: {
+				child01: {
+					template: "<div></div>"
+				},
+				/*
+					这里错误是试图在父组件模板内将一个指令绑定到子组件的属性/方法,并且把表达式绑定在子组件的数据中.正确做法如下,在子组件模板内绑定子组件数据的表达式
+				*/
+				child02: {
+					template: "<div v-show='someChildProperty'>Child02</div>",
+					// template: "<div>child02</div>",
+					data: function(){
+						return {
+							someChildProperty: true
+						}
+					}
+				}
+			}
+		})
+	</script>
+</body>
+</html>
