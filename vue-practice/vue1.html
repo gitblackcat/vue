@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		form > div:not(:last-child){
+			position: relative;
+			margin-bottom: 10px;
+		}
+		table{
+			margin-top: 10px;
+			text-align: center;
+			border-spacing: 0;
+		}
+		form > div:last-child{
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate3d(-50%, -50%, 0);
+		}
+	</style>
+	<script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+	<form id="app">
+		<div>
+			<label for="username">用户名:</label>
+			<input type="text" id="username" v-model="username">
+		</div>
+		<div>
+			<label for="age">年　龄:</label>
+			<input type="text" id="age" v-model="age">
+		</div>
+		<button type="button" @click="add">添加</button>
+		<input type="reset" value="重置">
+		<table border="1">
+			<tr>
+				<th>序号</th>
+				<th>用户名</th>
+				<th>年龄</th>
+				<th>操作</th>
+			</tr>
+			<tr v-for="(item,index) in items">
+				<td>{{index+1}}</td>
+				<td>{{item.username}}</td>
+				<td>{{item.age}}</td>
+				<td><button type="button" @click="deleteIt(index)">删除</button></td>
+			</tr>
+			<tr v-if="items.length !== 0">
+				<td colspan="4"><button type="button" @click="deleteAll">删除全部</button></td>
+			</tr>
+			<tr  v-if="items.length === 0">
+				<td colspan="4">暂无数据</td>
+			</tr>
+		</table>
+		<div v-show="it || all">
+			<div>{{warn}}</div>
+			<button type="button" @click="deleteYes">确定</button>
+			<button type="button" @click="deleteNo">取消</button>
+		</div>
+	</form>
+
+	<script>
+		var vm = new Vue({
+			el: "#app",
+			data: {
+				username: "",
+				age: "",
+				items: [],
+				it: false,
+				all: false,
+				indexIt: -1,
+				warn: ""
+			},
+			methods: {
+				add: function(){
+					this.items.push({
+						username: this.username,
+						age: this.age
+					})
+					this.username = ""
+					this.age = ""
+				},
+				deleteIt: function(index){
+					this.it = true,
+					this.warn = "确定删除此项?",
+					this.indexIt = index
+					//这个思路很好,怎么把特定的索引带到其他地方,就是把索引赋值给数据中进行存储
+				},
+				deleteAll: function(){
+					this.all = true,
+					this.warn = "确定全部删除?"
+				},
+				deleteYes: function(){
+					if( this.it ){
+						this.items.splice(this.indexIt,1)
+						this.it = false
+					}else{
+						this.items = []
+						this.all = false
+					}
+				},
+				deleteNo: function(){
+					this.it = false
+					this.all = false
+				}
+			}
+		})
+	</script>
+</body>
+</html>

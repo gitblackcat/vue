@@ -11,8 +11,8 @@
 	<!-- 创建要绑定vue组件的元素,这里制定id为yzd3的div -->
 	<div id="yzd3">
 		<ul>
-			<li v-for="book in books">
-				{{"name: " + book.name + ", " + "price: " + book.price}}
+			<li v-for="(book,index) in books">
+				{{"name: " + book.name + ", " + "price: " + book.price}} {{index}}
 			</li>
 		</ul>
 	</div>
