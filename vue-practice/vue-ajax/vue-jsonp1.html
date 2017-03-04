@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../../vue1.js"></script>
+	<script type="text/javascript" src="../../vue-resource1.js"></script>
+</head>
+<body>
+	<div id="app">
+		<button type="button" @click="jsonp">按钮</button>
+	</div>
+
+	<script>
+		var vm = new Vue({
+			el: "#app",
+			methods: {
+				jsonp: function(){
+					this.$http.jsonp('https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su',{
+					    wd:'海贼'
+					},{
+					    jsonp:'cb' //因为百度的接口名字为cb,所以这里是cb,默认是callback
+					}).then(function(res){
+					    alert(res.data.s);
+					},function(res){
+					    alert(res.status);
+					});
+				}
+			}
+		})
+	</script>
+</body>
+</html>

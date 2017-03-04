@@ -7,19 +7,17 @@
 </head>
 <body>
 	<div id="app">
-		{{12 | filter(2)}}
+		<!-- 此处需要用第一种方式,第二种方式图片出不来 -->
+		<img :src="url">
+		<br>
+		<img src="{{url}}">
 	</div>
 
 	<script>
 		var app = new Vue({
 			el: "#app",
 			data: {
-				
-			},
-			filters: {
-				filter: function(value,num){
-					return value*num
-				}
+				url: "https://www.baidu.com/img/bd_logo1.png"
 			}
 		})
 	</script>

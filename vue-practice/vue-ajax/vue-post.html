@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../../vue1.js"></script>
+	<script type="text/javascript" src="../../vue-resource1.js"></script>
+</head>
+<body>
+	<div id="app">
+		<button type="button" @click="get">按钮</button>
+	</div>
+
+	<script>
+		var vm = new Vue({
+			el: "#app",
+			methods: {
+				get: function(){
+					// this.$http.post('post.php',{
+					// 	a: 1,
+					// 	b: 2
+					// },{
+					// 	emulateJSON: true
+					// }).then(function(response){
+					// 	console.log(response)
+					// 	console.log(response.data)
+					// 	alert(response.data)
+					// 	console.log(response.status)
+					// },function(response){
+					// 	console.log(response)
+					// })
+
+					this.$http.post('post.php',{
+					    a:1,
+					    b:20
+					},{
+					    emulateJSON:true
+					}).then(function(res){
+					    alert(res.data);
+					},function(res){
+					    alert(res.status);
+					});
+				}
+			}
+		})
+	</script>
+</body>
+</html>
