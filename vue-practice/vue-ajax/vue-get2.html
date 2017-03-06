@@ -16,14 +16,28 @@
 			el: "#app",
 			methods: {
 				get: function(){
-					this.$http.get('get.php',{
-						a: 1,
-						b: 2
+					// this.$http.get('get.php',{
+					// 	a: 1,
+					// 	b: 2
+					// }).then(function(response){
+					// 	console.log(response)
+					// 	console.log(response.data)
+					// 	alert(response.data)
+					// 	console.log(response.status)
+					// },function(response){
+					// 	console.log(response)
+					// })
+
+					// 除了以上写法,还可以这样写,如果methods是jsonp,那么还要写jsonp的样式
+					this.$http({
+						url: "get.php",
+						method: "get",
+						data: {
+							a: 1,
+							b: 2
+						}
 					}).then(function(response){
 						console.log(response)
-						console.log(response.data)
-						alert(response.data)
-						console.log(response.status)
 					},function(response){
 						console.log(response)
 					})

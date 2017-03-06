@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		[v-cloak]{
+			display: none;
+		}
+	</style>
+	<script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+	<div id="app" v-cloak>
+		{{msg}}
+	</div>
+
+	<!-- 
+		v-cloak的作用就是当网速不好,或者在vue实例中计算量很大的时候,浏览器并不能得到真正的内容,而把{{msg}}原样渲染出来的时候,起到隐藏的作用.
+		v-cloak常用于模板较为复杂的时候
+	-->
+
+	<!-- 
+		另外还有v-text和v-html也能起到屏蔽从原样到内容渲染时候的闪烁效果.
+		这两个可以用在简单的模板上
+	-->
+
+	<script>
+		var vm = new Vue({
+			el: "#app",
+			data: {
+				msg: "just do IT."
+			}
+		})
+	</script>
+</body>
+</html>

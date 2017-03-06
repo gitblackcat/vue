@@ -16,15 +16,30 @@
 			el: "#app",
 			methods: {
 				jsonp: function(){
-					this.$http.jsonp('https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su',{
-					    wd:'海贼'
-					},{
-					    jsonp:'cb' //因为百度的接口名字为cb,所以这里是cb,默认是callback
-					}).then(function(res){
-					    alert(res.data.s);
-					},function(res){
-					    alert(res.status);
-					});
+					// this.$http.jsonp('https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su',{
+					//     wd:'海贼'
+					// },{
+					//     jsonp:'cb' //因为百度的接口名字为cb,所以这里是cb,默认是callback
+					// }).then(function(res){
+					//     alert(res.data.s);
+					// },function(res){
+					//     alert(res.status);
+					// });
+
+					// 除了以上写法,还可以这样写
+
+					this.$http({
+						url: "https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su",
+						method: "jsonp",
+						data: {
+							wd: "海贼"
+						},
+						jsonp: "cb"
+					}).then(function(response){
+						console.log( response.data.s )
+					},function(response){
+						console.log( response.status )
+					})
 				}
 			}
 		})

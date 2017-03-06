@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../vue1.js"></script>
+</head>
+<body>
+	<div id="app">
+		{{msg}}
+	</div>
+
+	<script>
+		var vm = new Vue({
+			aa: 11,
+			data: {
+				msg: "msg"
+			}
+		}).$mount("#app")
+
+		console.log( vm.$options.aa )
+	</script>
+</body>
+</html>
