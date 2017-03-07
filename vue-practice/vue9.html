@@ -10,8 +10,9 @@
     	{{msg}}
 	</div>
 
-	<script>
+	<!-- 深度监听,当被监听的数据是一个json,普通监听就不起作用了,需要开启深度监听{deep: true} -->
 
+	<script>
 		var vm = new Vue({
 			el: "#app",
 			data: {

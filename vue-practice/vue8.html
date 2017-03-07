@@ -7,28 +7,25 @@
 </head>
 <body>
 	<div id="app">
-    	{{msg}}
+    	<input type="text" @keyup.a="show">
 	</div>
 
+	<!-- 自定义键盘修饰符别名 -->
+
 	<script>
+		Vue.config.keyCodes.a = 65
 
 		var vm = new Vue({
 			el: "#app",
 			data: {
-				msg: {
-					name: "yzd",
-					age: 25
+				msg:'<strong>welcome</strong>'
+			},
+			methods: {
+				show: function(){
+					alert(1)
 				}
 			}
 		})
-
-		vm.$watch("msg",function(){
-			alert(12)
-		},{deep: true})
-
-		document.onclick = function(){
-			vm.msg.name = "ccc"
-		}
 	</script>
 </body>
 </html>

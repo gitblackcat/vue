@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+	<!-- 
+		自定义指令是用来操作底层DOM用的.
+		在自定义指令中用到的时候,如果和绑定自定义指定的元素绑定了相同的事件,不会冲突
+		例子如下
+	 -->
+
+	<div id="app">
+        <div v-drag :style="{width: '100px',height: '100px',backgroundColor: 'red',position: 'absolute',top: 0,left: 0}" @mousedown="console"></div>
+	</div>
+
+	<script>
+		var vm = new Vue({
+			el: "#app",
+			data: {
+				msg:'<strong>welcome</strong>'
+			},
+			directives: {
+				drag: function(el){
+					var x = 0,
+						y = 0
+					el.onmousedown = function(event){
+						x = event.clientX - el.offsetLeft
+						y = event.clientY - el.offsetTop
+
+						document.onmousemove = function(event){
+							el.style.top = event.clientY - y + 'px'
+							el.style.left = event.clientX - x + 'px'
+						}
+
+						document.onmouseup = function(){
+							document.onmousemove = null
+							document.onmouseup = null
+						}
+					}
+
+				}
+			},
+			methods: {
+				console: function(){
+					console.log(1)
+				}
+			}
+		})
+	</script>
+</body>
+</html>
