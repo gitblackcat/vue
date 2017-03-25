@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		p{
+			width: 500px;
+			margin: 0 auto;
+		}
+	</style>
+	<link rel="stylesheet" href="../bower_components/animate.css/animate.min.css">
+	<script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<button @click="show = !show">Toggle</button>
+		<transition
+			enter-active-class="animated tada"
+			leave-active-class="animated bounceOutRight"
+		>
+			<p v-show="show">hello</p>
+		</transition>
+	</div>
+
+	<h1>这里引用了animate.css的动画效果,在transition中的animated是让想要引用animate.css中的动画的元素添加钩子,然后排在animated后面的名称则为动画效果</h1>
+
+	<script>
+		var vm = new Vue({
+			el: "#app",
+			data: {
+				show: true
+			}
+		})
+	</script>
+</body>
+</html>

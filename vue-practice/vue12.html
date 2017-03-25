@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		p{
+			width: 500px;
+			font-size: 16px;
+			font-weight: bold;
+			margin: 0 auto;
+		}
+		.bounce-enter-active{
+			animation: bounce-in 1.5s;
+		}
+		.bounce-leave-active{
+			animation: bounce-out 1.8s
+		}
+		@keyframes bounce-in{
+			0%{
+				transform: scale(0);
+			}
+			50%{
+				transform: scale(1.5);
+			}
+			100%{
+				transform: scale(1);
+			}
+		}
+		@keyframes bounce-out{
+			0%{
+				transform: scale(1)
+			}
+			50%{
+				transform: scale(1.5)
+			}
+			100%{
+				transform: scale(0)
+			}
+		}
+	</style>
+	<script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<button @click="show = !show">Toggle</button>
+		<transition name="bounce">
+			<p v-show="show">hello</p>
+		</transition>
+	</div>
+
+	<script>
+		var vm = new Vue({
+			el: "#app",
+			data: {
+				show: true
+			}
+		})
+	</script>
+</body>
+</html>

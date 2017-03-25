@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<base target="_blank">
+	<style>
+		.slide-fade-enter-active{
+			transition: all 0.5s ease;
+		}
+		.slide-fade-leave-active{
+			transition: all 0.8s cubic-bezier(0.695, 0.560, 1.000, 0.025);
+		}
+		.slide-fade-enter,.slide-fade-leave-to{
+			transform: translateX(20px);
+			opacity: 0;
+		}
+	</style>
+	<script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<button @click="show = !show">Toggle</button>
+		<transition name="slide-fade">
+			<p v-show="show">hello</p>
+		</transition>
+	</div>
+
+	<h1>cubic-bezier 又称三次贝塞尔，主要是为 animation 生成速度曲线的函数.其实就是加速度曲线</h1>
+	<a href="http://xuanfengge.com/easeing/ceaser/">贝塞尔在线生成</a>
+	<a href="http://cubic-bezier.com/#.17,.67,1,.99">英文版贝塞尔在线生成</a>
+
+	<script>
+		var vm = new Vue({
+			el: "#app",
+			data: {
+				show: true
+			}
+		})
+	</script>
+</body>
+</html>

@@ -1,34 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<meta charset="UTF-8">
-	<title>Document</title>
-	<script type="text/javascript" src="../vue.js"></script>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script type="text/javascript" src="../vue.js"></script>
 </head>
+
 <body>
-	<div id="app">
-    	{{msg}}
-	</div>
+    <div id="app">
+        {{msg}}
+    </div>
 
-	<script>
+    <script>
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                msg: {
+                    name: "yzd",
+                    age: 25
+                }
+            }
+        })
 
-		var vm = new Vue({
-			el: "#app",
-			data: {
-				msg: {
-					name: "yzd",
-					age: 25
-				}
-			}
-		})
+        vm.$watch("msg", function() {
+            alert(12)
+        }, {
+            deep: true
+        })
 
-		vm.$watch("msg",function(){
-			alert(12)
-		},{deep: true})
-
-		document.onclick = function(){
-			vm.msg.name = "ccc"
-		}
-	</script>
+        document.onclick = function() {
+            vm.msg.name = "ccc"
+        }
+    </script>
 </body>
+
 </html>
